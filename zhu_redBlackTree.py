@@ -19,7 +19,6 @@ class zhu_redBlackBinaryTree(zhu_binaryTree):
     def __init__(self):
         super(zhu_redBlackBinaryTree, self).__init__()
         self._height = 0
-        self.balance = Balance
 
     def getHeight(self):
         return self._height
@@ -110,6 +109,7 @@ class zhu_redBlackBinaryTree(zhu_binaryTree):
         return node
 
     def removeItem(self, key):
+        self.balance = Balance
         self.root = self._removeItem(self.root, key)
         if self.balance != Balance:
             self._height -= 1
@@ -151,24 +151,3 @@ class zhu_redBlackBinaryTree(zhu_binaryTree):
             node._right = self._removeItem(node._right, key)
         node = self.retainBalance(node)
         return node
-
-if __name__ == '__main__':
-    bt = zhu_redBlackBinaryTree()
-    bt[10] = ''
-    bt[5] = ''
-    bt[15] = ''
-    bt[2] = ''
-    bt[12] = ''
-    bt[8] = ''
-    bt[18] = ''
-    bt[1] = ''
-    bt[3] = ''
-    bt[6] = ''
-    bt[9] = ''
-    print(bt)
-    print(bt.getHeight())
-    print(bt.root)
-    bt.removeItem(10)
-    print(bt)
-    print(bt.getHeight())
-    print(bt.root)
